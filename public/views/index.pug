@@ -1,0 +1,52 @@
+doctype html
+html(lang='en')
+  head
+    base(href="/")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(charset='utf-8')
+    title PP Integration Playground
+
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/sidebar.css')
+    link(rel='stylesheet', href='/css/app.css')
+
+
+  body#page-top(ng-app='playground', ng-controller='appCtl')
+
+    #wrapper
+      // Sidebar
+      #sidebar-wrapper
+        ul.sidebar-nav
+          li.sidebar-brand.hover
+            a
+              | Integration Playground
+          li
+            a.active(href='/') Simple Payment
+          li
+            a.active(href='/advanced') Advanced
+
+      a#menu-toggle.btn.btn-default Menu
+      // /#sidebar-wrapper
+      // Page Content
+      #page-content-wrapper
+        .container
+          ng-view
+
+      // /#page-content-wrapper
+
+    script(src='/js/components/jquery/jquery.min.js')
+    script(src='/js/components/bootstrap/bootstrap.min.js')
+    script(src='/js/components/angular/angular.min.js')
+    script(src='/js/components/angular-route/angular-route.min.js')
+    script(src='/js/components/angular-resource/angular-resource.min.js')
+    script(src='/js/components/angular-sanitize/angular-sanitize.min.js')
+    script(src='/js/app.js')
+    script(src='/simple/simple.js')
+
+    script.
+      $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
+
+    script(src='https://www.paypalobjects.com/api/checkout.js')

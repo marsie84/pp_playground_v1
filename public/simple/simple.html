@@ -1,0 +1,212 @@
+<div class="page-header">
+        <h2>Simple Payment</h2>
+</div>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapse1">
+      <h4 class="panel-title">
+        Button Look &amp; Feel
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <div class="col-sm-2">
+          <strong>Environment:</strong>
+          <select class="form-control" ng-model="optenv" ng-options="k for (k,v) in defoptions.env">
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <strong>Locale:</strong>
+          <select class="form-control" ng-model="optlocale" ng-options="k for (k,v) in defoptions.locale">
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <strong>Size:</strong>
+          <select class="form-control" ng-model="optsize" ng-options="k for (k,v) in defoptions.size">
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <strong>Shape:</strong>
+          <select class="form-control" ng-model="optshape" ng-options="k for (k,v) in defoptions.shape">
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <strong>Color:</strong>
+          <select class="form-control" ng-model="optcolor" ng-options="k for (k,v) in defoptions.color">
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapse2">
+      <h4 class="panel-title">
+        Payment Options
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><strong>Item Name 1</strong></label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="" type="text" placeholder="Test Item 1" ng-model="optitem1name">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><strong>Item Quantity</strong></label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="" type="number" placeholder="Quantity" ng-model="optitem1quantity" ng-change="subtotalcalc()">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><strong>Price</strong></label>
+                <div class="col-sm-10">
+                  <input class="form-control margin-bottom2" id="" type="number" placeholder="" ng-model="optitem1price" ng-change="subtotalcalc()">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><strong>Item Name 2</strong></label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="" type="text" placeholder="Test Item 2" ng-model="optitem2name">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><strong>Item Quantity</strong></label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="" type="number" placeholder="Quantity" ng-model="optitem2quantity" ng-change="subtotalcalc()">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><strong>Price</strong></label>
+                <div class="col-sm-10">
+                  <input class="form-control margin-bottom2" id="" type="number" placeholder="" ng-model="optitem2price" ng-change="subtotalcalc()">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><strong>Subtotal</strong></label>
+          <div class="col-sm-10">
+            <input class="form-control margin-bottom2" id="" disabled type="number" placeholder="0.01" ng-model="optsubtotal" ng-change="totalcalc()">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><strong>Tax</strong></label>
+          <div class="col-sm-10">
+            <input class="form-control" id="" type="number" placeholder="0.01" ng-model="opttax" ng-change="totalcalc()">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><strong>Handling Fee</strong></label>
+          <div class="col-sm-10">
+            <input class="form-control" id="" type="number" placeholder="0.01" ng-model="opthandling" ng-change="totalcalc()">
+          </div>
+        </div>
+        <hr>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><strong>Total Amount:</strong></label>
+          <div class="col-sm-10">
+            <input class="form-control margin-bottom" id="" disabled type="number" placeholder="0.01" ng-model="optamt">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><strong>Currency:</strong></label>
+          <div class="col-sm-10">
+            <select class="form-control" ng-model="optcurrency" ng-options="k for (k,v) in defoptions.currency">
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8">
+        <a class="btn btn-block btn-primary" ng-click="spawnButton()">Render Payment Button</a>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-11 col-sm-offset-1 hid">
+        <div class="row">
+            <div class="col-sm-3 col-sm-offset-4 text-center">
+                <div id="paypal-button"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div class="panel panel-default" ng-show="authorizeResults">
+  <div class="panel-heading" data-toggle="collapse" data-target="#resultsPanel">
+    <h4 class="panel-title">
+      {{resultFunction}} Function "data" object":
+    </h4>
+  </div>
+  <div class="panel-collapse collapse" id="resultsPanel">
+    <div class="panel-body" >
+      <pre id="authresults"></pre>
+    </div>
+  </div>
+</div>
+
+<div class="row" ng-show="authorizeSuccessResults">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8">
+        <a class="btn btn-block btn-primary" ng-click="paynow()">Initiate Payment by calling actions.payment.execute</a>
+  </div>
+  <div class="col-sm-2">
+  </div>
+</div>
+<hr>
+<div class="panel panel-default" ng-show="executeResults">
+  <div class="panel-heading" data-toggle="collapse" data-target="#executePanel">
+    <h4 class="panel-title">
+      actions.payment.execute {{executeFunction}} object:
+    </h4>
+  </div>
+  <div class="panel-collapse collapse" id="executePanel">
+    <div class="panel-body" >
+      <pre id="exeresults"></pre>
+    </div>
+  </div>
+</div>
+
+<!--
+      <paypal-button
+        env="buttonoptions.env"
+        client="buttonoptions.client"
+        locale="buttonoptions.locale"
+        style="buttonoptions.style"
+        payment="buttonoptions.payment"
+        commit="buttonoptions.commit"
+        on-authorize="buttonoptions.onAuthorize">
+      </paypal-button>
+-->
+
+</div>

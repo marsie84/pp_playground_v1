@@ -1,0 +1,50 @@
+{
+
+    "express": {
+        "view cache": false,
+        "view engine": "pug",
+        "views": "path:./public/views/"
+    },
+
+    "view engines": {
+        "jade": {
+            "module": "pug",
+            "renderer": "__express"
+        }
+    },
+
+    "databaseConfig": {
+        "host": "localhost",
+        "database": "bsp"
+    },
+
+
+    "specialization": {
+    },
+
+    "middleware": {
+
+
+
+        "static": {
+            "module": {
+                "arguments": [ "path:./.build" ]
+            }
+        },
+
+        "router": {
+            "module": {
+                "arguments": [{ "directory": "path:./controllers" }]
+            }
+        },
+
+        "AngularSinglePageRouter": {
+          "priority": 199,
+          "enabled": true,
+          "module": {
+              "name": "path:./lib/AngularSinglePageRouter"
+          }
+        }
+
+    }
+}

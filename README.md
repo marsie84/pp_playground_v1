@@ -10,7 +10,7 @@ Once this is done, go into a local command prompt, go to the directory you've do
 
 You should then see the following:
 
-![CMD NPM](https://github.paypal.com/MTS/pp_playground/blob/master/npm.jpg)
+![CMD NPM](https://www.github.com/marsie84/pp_playground_v1/blob/master/npm.jpg)
 
 
 You can then access the project by opening http://localhost:8000
